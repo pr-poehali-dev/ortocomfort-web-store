@@ -4,15 +4,16 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Icon from '@/components/ui/icon';
+import { useToast } from "@/components/ui/use-toast";
 
 const FeedbackSection = () => {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     message: ''
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errors, setErrors] = useState({
     name: '',
     phone: '',
@@ -68,15 +69,26 @@ const FeedbackSection = () => {
       });
       
       if (response.ok) {
-        setSubmitStatus('success');
+        toast({
+          title: "Успешно!",
+          description: "Сообщение отправлено! Мы свяжемся с вами в ближайшее время.",
+        });
         setFormData({ name: '', phone: '', message: '' });
         setErrors({ name: '', phone: '', message: '' });
       } else {
-        setSubmitStatus('error');
+        toast({
+          title: "Ошибка",
+          description: "Ошибка отправки сообщения. Попробуйте еще раз или свяжитесь по телефону.",
+          variant: "destructive",
+        });
       }
     } catch (error) {
       console.error('Ошибка отправки формы:', error);
-      setSubmitStatus('error');
+      toast({
+        title: "Ошибка сети",
+        description: "Не удалось отправить сообщение. Проверьте интернет-соединение.",
+        variant: "destructive",
+      });
     } finally {
       setIsLoading(false);
     }
@@ -139,17 +151,7 @@ const FeedbackSection = () => {
                 {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
               </div>
 
-              {submitStatus === 'success' && (
-                <div className="p-4 bg-green-100 border border-green-400 text-green-700 rounded-md mb-4">
-                  ✅ Сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.
-                </div>
-              )}
 
-              {submitStatus === 'error' && (
-                <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded-md mb-4">
-                  ❌ Ошибка отправки сообщения. Попробуйте еще раз или свяжитесь с нами по телефону.
-                </div>
-              )}
 
               <Button 
                 type="submit" 
