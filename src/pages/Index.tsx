@@ -13,10 +13,35 @@ const Index = () => {
     phone: '',
     message: ''
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Форма отправлена:', formData);
+    setIsLoading(true);
+    setSubmitStatus('idle');
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+      
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', phone: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Ошибка отправки формы:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const products = [
@@ -393,9 +418,35 @@ const Index = () => {
                   />
                 </div>
 
-                <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white" size="lg">
-                  <Icon name="Send" className="mr-2" size={20} />
-                  Отправить сообщение
+                {submitStatus === 'success' && (
+                  <div className="p-4 bg-green-100 border border-green-400 text-green-700 rounded-md mb-4">
+                    ✅ Сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.
+                  </div>
+                )}
+
+                {submitStatus === 'error' && (
+                  <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded-md mb-4">
+                    ❌ Ошибка отправки сообщения. Попробуйте еще раз или свяжитесь с нами по телефону.
+                  </div>
+                )}
+
+                <Button 
+                  type="submit" 
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white" 
+                  size="lg"
+                  disabled={isLoading}
+                >
+                  {isLoading ? (
+                    <>
+                      <Icon name="Loader2" className="mr-2 animate-spin" size={20} />
+                      Отправляем...
+                    </>
+                  ) : (
+                    <>
+                      <Icon name="Send" className="mr-2" size={20} />
+                      Отправить сообщение
+                    </>
+                  )}
                 </Button>
               </form>
             </Card>
