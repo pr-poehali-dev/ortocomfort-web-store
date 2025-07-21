@@ -341,12 +341,12 @@ const Index = () => {
 
             {/* Карта */}
             <div className="animate-scale-in">
-              <div className="bg-gray-100 rounded-2xl h-[500px] flex items-center justify-center">
-                <div className="text-center">
-                  <Icon name="Map" className="text-gray-400 mx-auto mb-4" size={64} />
-                  <p className="text-gray-600">Интерактивная карта</p>
-                  <p className="text-sm text-gray-500 mt-2">Карта будет загружена здесь</p>
-                </div>
+              <div className="bg-gray-100 rounded-2xl h-[500px] overflow-hidden">
+                <div 
+                  dangerouslySetInnerHTML={{
+                    __html: `<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aa34d0c71f2006848016fa4f6e13ac948ef9cc71c6ea9668fd2544d941adea33b&amp;width=100%&amp;height=500&amp;lang=ru_RU&amp;scroll=true"></script>`
+                  }}
+                />
               </div>
             </div>
           </div>
