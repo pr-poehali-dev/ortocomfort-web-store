@@ -59,7 +59,7 @@ const FeedbackSection = () => {
     setErrors({ name: '', phone: '', message: '' });
     
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch(`${window.location.protocol}//${window.location.hostname}:8000/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
