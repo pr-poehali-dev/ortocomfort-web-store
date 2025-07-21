@@ -219,7 +219,7 @@ const Index = () => {
                           ))}
                         </ul>
                       </div>
-                      <div className="mt-6">
+                      <div className="mt-6 flex justify-center">
                         <Button 
                           onClick={() => {
                             const form = document.getElementById('feedback-form');
@@ -232,7 +232,8 @@ const Index = () => {
                               }
                             }
                           }}
-                          className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                          className="bg-blue-600 hover:bg-blue-700 text-white px-8"
+                          size="lg"
                         >
                           <Icon name="MessageSquare" className="mr-2" size={18} />
                           Заказать консультацию
@@ -304,8 +305,8 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="mt-8 space-y-4">
-                <div className="flex flex-wrap gap-3">
+              <div className="mt-8">
+                <div className="grid grid-cols-2 gap-3">
                   <Button asChild className="bg-green-600 hover:bg-green-700 text-white">
                     <a href="https://wa.me/74951234567" target="_blank" rel="noopener noreferrer">
                       <Icon name="MessageCircle" className="mr-2" size={20} />
@@ -318,15 +319,13 @@ const Index = () => {
                       Telegram
                     </a>
                   </Button>
-                </div>
-                <div className="flex flex-wrap gap-3">
-                  <Button asChild variant="outline" className="border-red-600 text-red-600 hover:bg-red-50">
+                  <Button asChild className="bg-red-600 hover:bg-red-700 text-white">
                     <a href="https://yandex.ru/maps/?text=ул.%20Здоровья%2025%20Москва" target="_blank" rel="noopener noreferrer">
                       <Icon name="Map" className="mr-2" size={20} />
                       Яндекс.Карты
                     </a>
                   </Button>
-                  <Button asChild variant="outline" className="border-orange-600 text-orange-600 hover:bg-orange-50">
+                  <Button asChild className="bg-orange-600 hover:bg-orange-700 text-white">
                     <a href="https://2gis.ru/moscow/search/ул.%20Здоровья%2025" target="_blank" rel="noopener noreferrer">
                       <Icon name="Navigation" className="mr-2" size={20} />
                       2GIS
