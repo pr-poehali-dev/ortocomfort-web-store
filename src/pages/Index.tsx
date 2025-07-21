@@ -342,10 +342,13 @@ const Index = () => {
             {/* Карта */}
             <div className="animate-scale-in">
               <div className="bg-gray-100 rounded-2xl h-[500px] overflow-hidden">
-                <div 
-                  dangerouslySetInnerHTML={{
-                    __html: `<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aa34d0c71f2006848016fa4f6e13ac948ef9cc71c6ea9668fd2544d941adea33b&amp;width=100%&amp;height=500&amp;lang=ru_RU&amp;scroll=true"></script>`
-                  }}
+                <iframe 
+                  src="https://yandex.ru/map-widget/v1/?um=constructor%3Aa34d0c71f2006848016fa4f6e13ac948ef9cc71c6ea9668fd2544d941adea33b&source=constructor" 
+                  width="100%" 
+                  height="500" 
+                  frameBorder="0"
+                  className="rounded-2xl"
+                  title="Карта местоположения клиники ОртоКомфорт"
                 />
               </div>
             </div>
