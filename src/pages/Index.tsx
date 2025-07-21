@@ -83,11 +83,30 @@ const Index = () => {
                 Более 15 лет заботимся о вашем благополучии.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8">
+                <Button 
+                  onClick={() => {
+                    const form = document.getElementById('feedback-form');
+                    if (form) {
+                      form.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  size="lg" 
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8"
+                >
                   <Icon name="Phone" className="mr-2" size={20} />
                   Консультация
                 </Button>
-                <Button variant="outline" size="lg" className="border-2 border-green-600 text-green-600 hover:bg-green-50 px-8">
+                <Button 
+                  onClick={() => {
+                    const contact = document.getElementById('contact');
+                    if (contact) {
+                      contact.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  variant="outline" 
+                  size="lg" 
+                  className="border-2 border-green-600 text-green-600 hover:bg-green-50 px-8"
+                >
                   <Icon name="MapPin" className="mr-2" size={20} />
                   Наш адрес
                 </Button>
@@ -200,14 +219,23 @@ const Index = () => {
                           ))}
                         </ul>
                       </div>
-                      <div className="mt-6 flex space-x-3">
-                        <Button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white">
-                          <Icon name="Phone" className="mr-2" size={18} />
-                          Консультация
-                        </Button>
-                        <Button variant="outline" className="flex-1">
-                          <Icon name="Calculator" className="mr-2" size={18} />
-                          Узнать цену
+                      <div className="mt-6">
+                        <Button 
+                          onClick={() => {
+                            const form = document.getElementById('feedback-form');
+                            if (form) {
+                              form.scrollIntoView({ behavior: 'smooth' });
+                              const dialog = document.querySelector('[role="dialog"]');
+                              if (dialog) {
+                                const closeButton = dialog.querySelector('[data-state="open"] button');
+                                closeButton?.click();
+                              }
+                            }
+                          }}
+                          className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                        >
+                          <Icon name="MessageSquare" className="mr-2" size={18} />
+                          Заказать консультацию
                         </Button>
                       </div>
                     </DialogContent>
@@ -323,7 +351,7 @@ const Index = () => {
       </section>
 
       {/* Обратная связь */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-green-50">
+      <section id="feedback-form" className="py-20 bg-gradient-to-br from-blue-50 to-green-50">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-12 animate-fade-in">
