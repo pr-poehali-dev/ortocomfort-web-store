@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import Icon from '@/components/ui/icon';
 
 const Index = () => {
@@ -22,22 +23,30 @@ const Index = () => {
     {
       title: "Ортопедические стельки",
       description: "Индивидуальные стельки для коррекции осанки и поддержки стопы",
-      category: "Стельки"
+      category: "Стельки",
+      detailedDescription: "Профессиональные ортопедические стельки изготавливаются индивидуально для каждого пациента. Они обеспечивают правильное распределение нагрузки на стопу, улучшают осанку и снижают усталость ног. Изготовлены из высококачественных материалов с антибактериальным покрытием.",
+      features: ["Индивидуальное изготовление", "Коррекция плоскостопия", "Поддержка свода стопы", "Антибактериальное покрытие", "Дышащий материал"]
     },
     {
       title: "Корсеты и бандажи",
       description: "Поддерживающие изделия для позвоночника и суставов",
-      category: "Корсеты"
+      category: "Корсеты",
+      detailedDescription: "Медицинские корсеты и бандажи предназначены для фиксации и поддержки позвоночника, снижения болевых ощущений и профилактики травм. Различные степени жесткости позволяют подобрать оптимальный вариант для каждого случая.",
+      features: ["Разные степени жесткости", "Регулируемая фиксация", "Дышащие материалы", "Анатомический крой", "Незаметность под одеждой"]
     },
     {
       title: "Ортезы",
       description: "Специализированные изделия для фиксации и поддержки",
-      category: "Ортезы"
+      category: "Ортезы",
+      detailedDescription: "Ортезы — это технические средства реабилитации, предназначенные для компенсации нарушенных функций опорно-двигательного аппарата. Наши ортезы изготовлены из современных материалов и обеспечивают максимальный комфорт при использовании.",
+      features: ["Современные материалы", "Точная фиксация", "Регулировка по размеру", "Легкий вес", "Простота использования"]
     },
     {
       title: "Подушки и матрасы",
       description: "Ортопедические принадлежности для здорового сна",
-      category: "Сон"
+      category: "Сон",
+      detailedDescription: "Ортопедические подушки и матрасы обеспечивают правильное положение позвоночника во время сна, способствуют полноценному отдыху и восстановлению. Изготовлены из материалов с эффектом памяти и натуральных компонентов.",
+      features: ["Эффект памяти", "Поддержка позвоночника", "Гипоаллергенные материалы", "Терморегуляция", "Долговечность"]
     }
   ];
 
@@ -167,9 +176,42 @@ const Index = () => {
                   <CardDescription className="text-gray-600 mb-4">
                     {product.description}
                   </CardDescription>
-                  <Button variant="outline" className="w-full">
-                    Подробнее
-                  </Button>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button variant="outline" className="w-full">
+                        Подробнее
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+                      <DialogHeader>
+                        <DialogTitle className="text-2xl text-gray-800">{product.title}</DialogTitle>
+                        <DialogDescription className="text-lg text-gray-600 mt-2">
+                          {product.detailedDescription}
+                        </DialogDescription>
+                      </DialogHeader>
+                      <div className="mt-6">
+                        <h4 className="font-semibold text-lg text-gray-800 mb-3">Особенности:</h4>
+                        <ul className="space-y-2">
+                          {product.features.map((feature, featureIndex) => (
+                            <li key={featureIndex} className="flex items-center text-gray-600">
+                              <Icon name="Check" className="text-green-600 mr-2" size={16} />
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="mt-6 flex space-x-3">
+                        <Button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white">
+                          <Icon name="Phone" className="mr-2" size={18} />
+                          Консультация
+                        </Button>
+                        <Button variant="outline" className="flex-1">
+                          <Icon name="Calculator" className="mr-2" size={18} />
+                          Узнать цену
+                        </Button>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
                 </CardContent>
               </Card>
             ))}
@@ -234,15 +276,35 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="mt-8 flex space-x-4">
-                <Button className="bg-green-600 hover:bg-green-700 text-white" size="lg">
-                  <Icon name="MessageCircle" className="mr-2" size={20} />
-                  WhatsApp
-                </Button>
-                <Button className="bg-blue-500 hover:bg-blue-600 text-white" size="lg">
-                  <Icon name="Send" className="mr-2" size={20} />
-                  Telegram
-                </Button>
+              <div className="mt-8 space-y-4">
+                <div className="flex flex-wrap gap-3">
+                  <Button asChild className="bg-green-600 hover:bg-green-700 text-white">
+                    <a href="https://wa.me/74951234567" target="_blank" rel="noopener noreferrer">
+                      <Icon name="MessageCircle" className="mr-2" size={20} />
+                      WhatsApp
+                    </a>
+                  </Button>
+                  <Button asChild className="bg-blue-500 hover:bg-blue-600 text-white">
+                    <a href="https://t.me/ortokomfort" target="_blank" rel="noopener noreferrer">
+                      <Icon name="Send" className="mr-2" size={20} />
+                      Telegram
+                    </a>
+                  </Button>
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  <Button asChild variant="outline" className="border-red-600 text-red-600 hover:bg-red-50">
+                    <a href="https://yandex.ru/maps/?text=ул.%20Здоровья%2025%20Москва" target="_blank" rel="noopener noreferrer">
+                      <Icon name="Map" className="mr-2" size={20} />
+                      Яндекс.Карты
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline" className="border-orange-600 text-orange-600 hover:bg-orange-50">
+                    <a href="https://2gis.ru/moscow/search/ул.%20Здоровья%2025" target="_blank" rel="noopener noreferrer">
+                      <Icon name="Navigation" className="mr-2" size={20} />
+                      2GIS
+                    </a>
+                  </Button>
+                </div>
               </div>
             </div>
 
