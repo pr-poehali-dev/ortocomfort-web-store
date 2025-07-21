@@ -274,7 +274,7 @@ const Index = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-800">Адрес</h3>
-                    <p className="text-gray-600">ул. Здоровья, 25, Москва, 101000</p>
+                    <p className="text-gray-600">ул. Чехова, 20, Альметьевск, Республика Татарстан, 423452</p>
                   </div>
                 </div>
 
@@ -324,13 +324,13 @@ const Index = () => {
                     </a>
                   </Button>
                   <Button asChild className="bg-red-600 hover:bg-red-700 text-white">
-                    <a href="https://yandex.ru/maps/?text=ул.%20Здоровья%2025%20Москва" target="_blank" rel="noopener noreferrer">
+                    <a href="https://yandex.ru/maps/?text=улица%20Чехова%2020%20Альметьевск%20Республика%20Татарстан" target="_blank" rel="noopener noreferrer">
                       <Icon name="Map" className="mr-2" size={20} />
                       Яндекс.Карты
                     </a>
                   </Button>
                   <Button asChild className="bg-orange-600 hover:bg-orange-700 text-white">
-                    <a href="https://2gis.ru/moscow/search/ул.%20Здоровья%2025" target="_blank" rel="noopener noreferrer">
+                    <a href="https://2gis.ru/almetyevsk/search/улица%20Чехова%2020" target="_blank" rel="noopener noreferrer">
                       <Icon name="Navigation" className="mr-2" size={20} />
                       2GIS
                     </a>
@@ -441,7 +441,7 @@ const Index = () => {
               <div className="space-y-2 text-gray-400">
                 <p>+7 (495) 123-45-67</p>
                 <p>info@ortokomfort.ru</p>
-                <p>ул. Здоровья, 25, Москва</p>
+                <p>ул. Чехова, 20, Альметьевск</p>
               </div>
             </div>
           </div>
