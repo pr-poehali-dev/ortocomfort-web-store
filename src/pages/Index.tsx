@@ -284,19 +284,11 @@ const Index = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-800">Телефон</h3>
-                    <p className="text-gray-600">+7 (495) 123-45-67</p>
+                    <a href="tel:+79961210555" className="text-blue-600 hover:text-blue-800 underline">+7 996 121-05-55</a>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                    <Icon name="Mail" className="text-purple-600" size={24} />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-800">Email</h3>
-                    <p className="text-gray-600">info@ortokomfort.ru</p>
-                  </div>
-                </div>
+
 
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
@@ -312,7 +304,7 @@ const Index = () => {
               <div className="mt-8">
                 <div className="grid grid-cols-2 gap-3">
                   <Button asChild className="bg-green-600 hover:bg-green-700 text-white">
-                    <a href="https://wa.me/74951234567" target="_blank" rel="noopener noreferrer">
+                    <a href="https://wa.me/79961210555" target="_blank" rel="noopener noreferrer">
                       <Icon name="MessageCircle" className="mr-2" size={20} />
                       WhatsApp
                     </a>
@@ -329,7 +321,7 @@ const Index = () => {
                       Яндекс.Карты
                     </a>
                   </Button>
-                  <Button asChild className="bg-orange-600 hover:bg-orange-700 text-white">
+                  <Button asChild style={{backgroundColor: 'rgb(166, 206, 56)', color: 'white'}} className="hover:opacity-90 text-white">
                     <a href="https://2gis.ru/almetyevsk/search/улица%20Чехова%2020" target="_blank" rel="noopener noreferrer">
                       <Icon name="Navigation" className="mr-2" size={20} />
                       2GIS
@@ -442,8 +434,7 @@ const Index = () => {
             <div>
               <h3 className="text-lg font-semibold mb-4">Контакты</h3>
               <div className="space-y-2 text-gray-400">
-                <p>+7 (495) 123-45-67</p>
-                <p>info@ortokomfort.ru</p>
+                <a href="tel:+79961210555" className="hover:text-white transition-colors">+7 996 121-05-55</a>
                 <p>ул. Чехова, 20, Альметьевск</p>
               </div>
             </div>
