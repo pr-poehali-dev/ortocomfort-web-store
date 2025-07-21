@@ -118,8 +118,8 @@ const Index = () => {
             </div>
             <div className="relative animate-scale-in">
               <img 
-                src="/img/1a1199a0-ef3e-4e1c-a6e8-41dbcd339172.jpg" 
-                alt="Ортопедический специалист" 
+                src="/img/42f27531-f50d-4617-8332-d862c5db973e.jpg" 
+                alt="Медицинский специалист возле ресепшена" 
                 className="rounded-2xl shadow-2xl w-full h-[500px] object-cover"
               />
             </div>
