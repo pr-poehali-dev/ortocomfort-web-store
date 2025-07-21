@@ -56,7 +56,6 @@ const FeedbackSection = () => {
     }
     
     setIsLoading(true);
-    setSubmitStatus('idle');
     setErrors({ name: '', phone: '', message: '' });
     
     try {
@@ -77,8 +76,8 @@ const FeedbackSection = () => {
         setErrors({ name: '', phone: '', message: '' });
       } else {
         toast({
-          title: "Ошибка",
-          description: "Ошибка отправки сообщения. Попробуйте еще раз или свяжитесь по телефону.",
+          title: "Ошибка сервера",
+          description: `Ошибка ${response.status}. Попробуйте еще раз или свяжитесь по телефону.`,
           variant: "destructive",
         });
       }
@@ -86,7 +85,7 @@ const FeedbackSection = () => {
       console.error('Ошибка отправки формы:', error);
       toast({
         title: "Ошибка сети",
-        description: "Не удалось отправить сообщение. Проверьте интернет-соединение.",
+        description: `Не удалось отправить сообщение. ${error instanceof Error ? error.message : 'Проверьте интернет-соединение.'}`,
         variant: "destructive",
       });
     } finally {
