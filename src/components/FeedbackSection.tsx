@@ -13,11 +13,50 @@ const FeedbackSection = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errors, setErrors] = useState({
+    name: '',
+    phone: '',
+    message: ''
+  });
+
+  const validateForm = () => {
+    const newErrors = { name: '', phone: '', message: '' };
+    let isValid = true;
+
+    // Проверка имени
+    if (formData.name.trim().length < 2) {
+      newErrors.name = 'Имя должно содержать минимум 2 символа';
+      isValid = false;
+    }
+
+    // Проверка телефона
+    const phoneRegex = /^\+?[7,8]\s?\(?\d{3}\)?\s?\d{3}[\s-]?\d{2}[\s-]?\d{2}$/;
+    const cleanPhone = formData.phone.replace(/\s/g, '');
+    if (!phoneRegex.test(formData.phone) || cleanPhone.length < 11) {
+      newErrors.phone = 'Введите корректный номер телефона';
+      isValid = false;
+    }
+
+    // Проверка сообщения
+    if (formData.message.trim().length < 10) {
+      newErrors.message = 'Сообщение должно содержать минимум 10 символов';
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+    
     setIsLoading(true);
     setSubmitStatus('idle');
+    setErrors({ name: '', phone: '', message: '' });
     
     try {
       const response = await fetch('http://localhost:8000/api/contact', {
@@ -31,6 +70,7 @@ const FeedbackSection = () => {
       if (response.ok) {
         setSubmitStatus('success');
         setFormData({ name: '', phone: '', message: '' });
+        setErrors({ name: '', phone: '', message: '' });
       } else {
         setSubmitStatus('error');
       }
@@ -60,10 +100,14 @@ const FeedbackSection = () => {
                 <Input
                   type="text"
                   value={formData.name}
-                  onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  onChange={(e) => {
+                    setFormData({...formData, name: e.target.value});
+                    if (errors.name) setErrors({...errors, name: ''});
+                  }}
                   placeholder="Ваше имя"
-                  className="w-full"
+                  className={`w-full ${errors.name ? 'border-red-500' : ''}`}
                 />
+                {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
               </div>
 
               <div>
@@ -71,20 +115,28 @@ const FeedbackSection = () => {
                 <Input
                   type="tel"
                   value={formData.phone}
-                  onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                  onChange={(e) => {
+                    setFormData({...formData, phone: e.target.value});
+                    if (errors.phone) setErrors({...errors, phone: ''});
+                  }}
                   placeholder="+7 (999) 123-45-67"
-                  className="w-full"
+                  className={`w-full ${errors.phone ? 'border-red-500' : ''}`}
                 />
+                {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Сообщение</label>
                 <Textarea
                   value={formData.message}
-                  onChange={(e) => setFormData({...formData, message: e.target.value})}
+                  onChange={(e) => {
+                    setFormData({...formData, message: e.target.value});
+                    if (errors.message) setErrors({...errors, message: ''});
+                  }}
                   placeholder="Расскажите о ваших потребностях..."
-                  className="w-full h-32"
+                  className={`w-full h-32 ${errors.message ? 'border-red-500' : ''}`}
                 />
+                {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
               </div>
 
               {submitStatus === 'success' && (
