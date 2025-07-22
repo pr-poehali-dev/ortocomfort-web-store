@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, DialogClose } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import Icon from '@/components/ui/icon';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -91,28 +91,6 @@ const products: Product[] = [
 ];
 
 const ProductsSection = () => {
-  const [activeTab, setActiveTab] = useState('products');
-  const [openServiceModal, setOpenServiceModal] = useState<number | null>(null);
-  const [openProductModal, setOpenProductModal] = useState<number | null>(null);
-  
-  const handleOrderService = () => {
-    // Сначала закрываем модалку
-    setOpenServiceModal(null);
-    
-    // Блокируем автоскролл браузера
-    document.body.style.scrollBehavior = 'auto';
-    
-    // После закрытия анимации скроллим к форме
-    requestAnimationFrame(() => {
-      setTimeout(() => {
-        const form = document.getElementById('feedback-form');
-        if (form) {
-          document.body.style.scrollBehavior = 'smooth';
-          form.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 200);
-    });
-  };
   return (
     <section id="products" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -148,7 +126,7 @@ const ProductsSection = () => {
                 <CardDescription className="text-gray-600 mb-4">
                   {product.description}
                 </CardDescription>
-                <Dialog open={openProductModal === index} onOpenChange={(open) => setOpenProductModal(open ? index : null)}>
+                <Dialog>
                   <DialogTrigger asChild>
                     <Button variant="outline" className="w-full">
                       Подробнее
@@ -214,20 +192,20 @@ const ProductsSection = () => {
                           <CardDescription className="text-gray-600 mb-4 flex-1">
                             {product.description}
                           </CardDescription>
-                          <Dialog open={openProductModal === index} onOpenChange={(open) => setOpenProductModal(open ? index : null)}>
+                          <Dialog>
                             <DialogTrigger asChild>
                               <Button variant="outline" className="w-full">
                                 Подробнее
                               </Button>
                             </DialogTrigger>
-                            <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto sm:max-w-2xl sm:max-h-[80vh] sm:rounded-lg max-sm:max-w-full max-sm:max-h-full max-sm:h-screen max-sm:w-screen max-sm:rounded-none max-sm:p-6 max-sm:flex max-sm:flex-col">
-                              <DialogHeader className="max-sm:flex-shrink-0">
+                            <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+                              <DialogHeader>
                                 <DialogTitle className="text-2xl text-gray-800">{product.title}</DialogTitle>
                                 <DialogDescription className="text-lg text-gray-600 mt-2">
                                   {product.detailedDescription}
                                 </DialogDescription>
                               </DialogHeader>
-                              <div className="mt-6 max-sm:flex-1 max-sm:overflow-y-auto">
+                              <div className="mt-6">
                                 <h4 className="font-semibold text-lg text-gray-800 mb-3">Особенности:</h4>
                                 <ul className="space-y-2">
                                   {product.features.map((feature, featureIndex) => (
@@ -286,21 +264,14 @@ const ProductsSection = () => {
                     <CardDescription className="text-gray-600 mb-4">
                       {service.description}
                     </CardDescription>
-                    <Dialog open={openServiceModal === index} onOpenChange={(open) => {
-                      if (!open) {
-                        // Предотвращаем автоскролл при закрытии
-                        setTimeout(() => setOpenServiceModal(null), 50);
-                      } else {
-                        setOpenServiceModal(index);
-                      }
-                    }}>
+                    <Dialog>
                       <DialogTrigger asChild>
                         <Button variant="outline" className="w-full">
                           Подробнее
                         </Button>
                       </DialogTrigger>
-                      <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto sm:max-w-2xl sm:max-h-[80vh] sm:rounded-lg max-sm:max-w-full max-sm:max-h-full max-sm:h-screen max-sm:w-screen max-sm:rounded-none max-sm:p-6 max-sm:flex max-sm:flex-col">
-                        <DialogHeader className="max-sm:flex-shrink-0">
+                      <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+                        <DialogHeader>
                           <DialogTitle className="text-2xl text-gray-800">
                             {service.title}
                           </DialogTitle>
@@ -308,7 +279,7 @@ const ProductsSection = () => {
                             {service.detailedDescription}
                           </DialogDescription>
                         </DialogHeader>
-                        <div className="mt-6 max-sm:flex-1 max-sm:overflow-y-auto">
+                        <div className="mt-6">
                           <div className="bg-green-50 p-4 rounded-lg mb-6">
                             <p className="text-2xl font-bold text-green-800 text-center">{service.price}</p>
                           </div>
@@ -323,16 +294,24 @@ const ProductsSection = () => {
                           </ul>
                         </div>
                         <div className="mt-6 flex justify-center">
-                          <DialogClose asChild>
-                            <Button 
-                              onClick={handleOrderService}
-                              className="bg-green-600 hover:bg-green-700 text-white px-8"
-                              size="lg"
-                            >
-                              <Icon name="Phone" className="mr-2" size={18} />
-                              Заказать услугу
-                            </Button>
-                          </DialogClose>
+                          <Button 
+                            onClick={() => {
+                              const form = document.getElementById('feedback-form');
+                              if (form) {
+                                form.scrollIntoView({ behavior: 'smooth' });
+                                const dialog = document.querySelector('[role="dialog"]');
+                                if (dialog) {
+                                  const closeButton = dialog.querySelector('[data-state="open"] button');
+                                  closeButton?.click();
+                                }
+                              }
+                            }}
+                            className="bg-green-600 hover:bg-green-700 text-white px-8"
+                            size="lg"
+                          >
+                            <Icon name="Phone" className="mr-2" size={18} />
+                            Заказать услугу
+                          </Button>
                         </div>
                       </DialogContent>
                     </Dialog>
@@ -364,8 +343,8 @@ const ProductsSection = () => {
                                 Подробнее
                               </Button>
                             </DialogTrigger>
-                            <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto sm:max-w-2xl sm:max-h-[80vh] sm:rounded-lg max-sm:max-w-full max-sm:max-h-full max-sm:h-screen max-sm:w-screen max-sm:rounded-none max-sm:p-6 max-sm:flex max-sm:flex-col">
-                              <DialogHeader className="max-sm:flex-shrink-0">
+                            <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+                              <DialogHeader>
                                 <DialogTitle className="text-2xl text-gray-800">
                                   {service.title}
                                 </DialogTitle>
@@ -373,7 +352,7 @@ const ProductsSection = () => {
                                   {service.detailedDescription}
                                 </DialogDescription>
                               </DialogHeader>
-                              <div className="mt-6 max-sm:flex-1 max-sm:overflow-y-auto">
+                              <div className="mt-6">
                                 <div className="bg-green-50 p-4 rounded-lg mb-6">
                                   <p className="text-2xl font-bold text-green-800 text-center">{service.price}</p>
                                 </div>
