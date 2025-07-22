@@ -91,6 +91,31 @@ const products: Product[] = [
 ];
 
 const ProductsSection = () => {
+  const [activeTab, setActiveTab] = useState('products');
+  const [openServiceModal, setOpenServiceModal] = useState<number | null>(null);
+  const [openProductModal, setOpenProductModal] = useState<number | null>(null);
+  
+  const handleOrderService = () => {
+    setOpenServiceModal(null);
+    
+    // Используем более надежный способ предотвращения возврата фокуса
+    setTimeout(() => {
+      const form = document.getElementById('feedback-form');
+      if (form) {
+        // Прокручиваем к форме и устанавливаем фокус на неё
+        form.scrollIntoView({ behavior: 'smooth' });
+        
+        // Устанавливаем фокус на первый элемент формы
+        setTimeout(() => {
+          const firstInput = form.querySelector('input, textarea') as HTMLElement;
+          if (firstInput) {
+            firstInput.focus({ preventScroll: true });
+          }
+        }, 500);
+      }
+    }, 100);
+  };
+  
   return (
     <section id="products" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -264,7 +289,7 @@ const ProductsSection = () => {
                     <CardDescription className="text-gray-600 mb-4">
                       {service.description}
                     </CardDescription>
-                    <Dialog>
+                    <Dialog open={openServiceModal === index} onOpenChange={(open) => setOpenServiceModal(open ? index : null)}>
                       <DialogTrigger asChild>
                         <Button variant="outline" className="w-full">
                           Подробнее
@@ -295,17 +320,7 @@ const ProductsSection = () => {
                         </div>
                         <div className="mt-6 flex justify-center">
                           <Button 
-                            onClick={() => {
-                              const form = document.getElementById('feedback-form');
-                              if (form) {
-                                form.scrollIntoView({ behavior: 'smooth' });
-                                const dialog = document.querySelector('[role="dialog"]');
-                                if (dialog) {
-                                  const closeButton = dialog.querySelector('[data-state="open"] button');
-                                  closeButton?.click();
-                                }
-                              }
-                            }}
+                            onClick={handleOrderService}
                             className="bg-green-600 hover:bg-green-700 text-white px-8"
                             size="lg"
                           >
