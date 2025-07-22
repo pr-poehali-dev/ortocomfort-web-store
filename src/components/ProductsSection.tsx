@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, DialogClose } from "@/components/ui/dialog";
 import Icon from '@/components/ui/icon';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -319,14 +319,16 @@ const ProductsSection = () => {
                           </ul>
                         </div>
                         <div className="mt-6 flex justify-center">
-                          <Button 
-                            onClick={handleOrderService}
-                            className="bg-green-600 hover:bg-green-700 text-white px-8"
-                            size="lg"
-                          >
-                            <Icon name="Phone" className="mr-2" size={18} />
-                            Заказать услугу
-                          </Button>
+                          <DialogClose asChild>
+                            <Button 
+                              onClick={handleOrderService}
+                              className="bg-green-600 hover:bg-green-700 text-white px-8"
+                              size="lg"
+                            >
+                              <Icon name="Phone" className="mr-2" size={18} />
+                              Заказать услугу
+                            </Button>
+                          </DialogClose>
                         </div>
                       </DialogContent>
                     </Dialog>
@@ -382,24 +384,16 @@ const ProductsSection = () => {
                                 </ul>
                               </div>
                               <div className="mt-6 flex justify-center">
-                                <Button 
-                                  onClick={() => {
-                                    const form = document.getElementById('feedback-form');
-                                    if (form) {
-                                      form.scrollIntoView({ behavior: 'smooth' });
-                                      const dialog = document.querySelector('[role="dialog"]');
-                                      if (dialog) {
-                                        const closeButton = dialog.querySelector('[data-state="open"] button');
-                                        closeButton?.click();
-                                      }
-                                    }
-                                  }}
-                                  className="bg-green-600 hover:bg-green-700 text-white px-8"
-                                  size="lg"
-                                >
-                                  <Icon name="Phone" className="mr-2" size={18} />
-                                  Заказать услугу
-                                </Button>
+                                <DialogClose asChild>
+                                  <Button 
+                                    onClick={handleOrderService}
+                                    className="bg-green-600 hover:bg-green-700 text-white px-8"
+                                    size="lg"
+                                  >
+                                    <Icon name="Phone" className="mr-2" size={18} />
+                                    Заказать услугу
+                                  </Button>
+                                </DialogClose>
                               </div>
                             </DialogContent>
                           </Dialog>
