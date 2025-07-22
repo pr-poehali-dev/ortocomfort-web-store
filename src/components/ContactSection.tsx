@@ -51,19 +51,19 @@ const ContactSection = () => {
                   </a>
                 </Button>
                 <Button asChild className="bg-blue-500 hover:bg-blue-600 text-white">
-                  <a href="https://t.me/ortokomfort" target="_blank" rel="noopener noreferrer">
+                  <a href="https://t.me/+79961210555" target="_blank" rel="noopener noreferrer">
                     <Icon name="Send" className="mr-2" size={20} />
                     Telegram
                   </a>
                 </Button>
                 <Button asChild className="bg-red-600 hover:bg-red-700 text-white">
-                  <a href="https://yandex.ru/maps/?text=улица%20Чехова%2020%20Альметьевск%20Республика%20Татарстан" target="_blank" rel="noopener noreferrer">
+                  <a href="https://yandex.ru/maps/-/CHHxqZLu" target="_blank" rel="noopener noreferrer">
                     <Icon name="Map" className="mr-2" size={20} />
                     Яндекс.Карты
                   </a>
                 </Button>
                 <Button asChild style={{backgroundColor: 'rgb(166, 206, 56)', color: 'white'}} className="hover:opacity-90 text-white">
-                  <a href="https://2gis.ru/almetyevsk/search/улица%20Чехова%2020" target="_blank" rel="noopener noreferrer">
+                  <a href="https://go.2gis.com/TEVHG" target="_blank" rel="noopener noreferrer">
                     <Icon name="Navigation" className="mr-2" size={20} />
                     2GIS
                   </a>
