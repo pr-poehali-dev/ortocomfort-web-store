@@ -157,7 +157,7 @@ const ProductsSection = () => {
           {products.map((product, index) => (
             <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 animate-scale-in">
               <CardHeader>
-                <Badge className="w-fit mb-2 bg-blue-100 text-blue-800">{product.category}</Badge>
+                <Badge className="w-fit mb-2 bg-blue-100 text-blue-800 pointer-events-none">{product.category}</Badge>
                 <CardTitle className="text-lg">{product.title}</CardTitle>
               </CardHeader>
               <CardContent>
@@ -215,7 +215,7 @@ const ProductsSection = () => {
                     <CarouselItem key={index} className="basis-4/5">
                       <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-80 flex flex-col">
                         <CardHeader>
-                          <Badge className="w-fit mb-2 bg-blue-100 text-blue-800">{product.category}</Badge>
+                          <Badge className="w-fit mb-2 bg-blue-100 text-blue-800 pointer-events-none">{product.category}</Badge>
                           <CardTitle className="text-lg">{product.title}</CardTitle>
                         </CardHeader>
                         <CardContent className="flex-1 flex flex-col">
