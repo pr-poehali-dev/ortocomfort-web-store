@@ -302,8 +302,11 @@ const ProductsSection = () => {
                           </DialogDescription>
                         </DialogHeader>
                         <div className="mt-6">
-                          <div className="bg-green-50 p-4 rounded-lg mb-6">
-                            <p className="text-2xl font-bold text-green-800 text-center">{service.price}</p>
+                          <div className="mb-6">
+                            <div className="flex items-center justify-between border-b border-gray-200 pb-3">
+                              <span className="text-lg font-medium text-gray-700">Стоимость:</span>
+                              <span className="text-2xl font-bold text-blue-600">{service.price}</span>
+                            </div>
                           </div>
                           <h4 className="font-semibold text-lg text-gray-800 mb-3">Преимущества:</h4>
                           <ul className="space-y-2">
@@ -367,8 +370,11 @@ const ProductsSection = () => {
                                 </DialogDescription>
                               </DialogHeader>
                               <div className="mt-6">
-                                <div className="bg-green-50 p-4 rounded-lg mb-6">
-                                  <p className="text-2xl font-bold text-green-800 text-center">{service.price}</p>
+                                <div className="mb-6">
+                                  <div className="flex items-center justify-between border-b border-gray-200 pb-3">
+                                    <span className="text-lg font-medium text-gray-700">Стоимость:</span>
+                                    <span className="text-2xl font-bold text-blue-600">{service.price}</span>
+                                  </div>
                                 </div>
                                 <h4 className="font-semibold text-lg text-gray-800 mb-3">Преимущества:</h4>
                                 <ul className="space-y-2">
