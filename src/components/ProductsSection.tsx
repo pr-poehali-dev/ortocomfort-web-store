@@ -96,16 +96,29 @@ const ProductsSection = () => {
   const [openProductModal, setOpenProductModal] = useState<number | null>(null);
   
   const handleOrderService = () => {
-    setOpenServiceModal(null);
-    
-    // Используем более надежный способ предотвращения возврата фокуса
+    // DialogClose автоматически закрывает модалку, просто скроллим к форме
     setTimeout(() => {
       const form = document.getElementById('feedback-form');
       if (form) {
-        // Прокручиваем к форме и устанавливаем фокус на неё
         form.scrollIntoView({ behavior: 'smooth' });
         
-        // Устанавливаем фокус на первый элемент формы
+        setTimeout(() => {
+          const firstInput = form.querySelector('input, textarea') as HTMLElement;
+          if (firstInput) {
+            firstInput.focus({ preventScroll: true });
+          }
+        }, 500);
+      }
+    }, 100);
+  };
+
+  const handleOrderConsultation = () => {
+    // DialogClose автоматически закрывает модалку, скроллим к форме
+    setTimeout(() => {
+      const form = document.getElementById('feedback-form');
+      if (form) {
+        form.scrollIntoView({ behavior: 'smooth' });
+        
         setTimeout(() => {
           const firstInput = form.querySelector('input, textarea') as HTMLElement;
           if (firstInput) {
@@ -176,24 +189,16 @@ const ProductsSection = () => {
                       </ul>
                     </div>
                     <div className="mt-6 flex justify-center">
-                      <Button 
-                        onClick={() => {
-                          const form = document.getElementById('feedback-form');
-                          if (form) {
-                            form.scrollIntoView({ behavior: 'smooth' });
-                            const dialog = document.querySelector('[role="dialog"]');
-                            if (dialog) {
-                              const closeButton = dialog.querySelector('[data-state="open"] button');
-                              closeButton?.click();
-                            }
-                          }
-                        }}
-                        className="bg-blue-600 hover:bg-blue-700 text-white px-8"
-                        size="lg"
-                      >
-                        <Icon name="MessageSquare" className="mr-2" size={18} />
-                        Заказать консультацию
-                      </Button>
+                      <DialogClose asChild>
+                        <Button 
+                          onClick={handleOrderConsultation}
+                          className="bg-blue-600 hover:bg-blue-700 text-white px-8"
+                          size="lg"
+                        >
+                          <Icon name="MessageSquare" className="mr-2" size={18} />
+                          Заказать консультацию
+                        </Button>
+                      </DialogClose>
                     </div>
                   </DialogContent>
                 </Dialog>
@@ -242,24 +247,16 @@ const ProductsSection = () => {
                                 </ul>
                               </div>
                               <div className="mt-6 flex justify-center">
-                                <Button 
-                                  onClick={() => {
-                                    const form = document.getElementById('feedback-form');
-                                    if (form) {
-                                      form.scrollIntoView({ behavior: 'smooth' });
-                                      const dialog = document.querySelector('[role="dialog"]');
-                                      if (dialog) {
-                                        const closeButton = dialog.querySelector('[data-state="open"] button');
-                                        closeButton?.click();
-                                      }
-                                    }
-                                  }}
-                                  className="bg-blue-600 hover:bg-blue-700 text-white px-8"
-                                  size="lg"
-                                >
-                                  <Icon name="MessageSquare" className="mr-2" size={18} />
-                                  Заказать консультацию
-                                </Button>
+                                <DialogClose asChild>
+                                  <Button 
+                                    onClick={handleOrderConsultation}
+                                    className="bg-blue-600 hover:bg-blue-700 text-white px-8"
+                                    size="lg"
+                                  >
+                                    <Icon name="MessageSquare" className="mr-2" size={18} />
+                                    Заказать консультацию
+                                  </Button>
+                                </DialogClose>
                               </div>
                             </DialogContent>
                           </Dialog>
