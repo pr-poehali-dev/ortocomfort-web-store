@@ -155,7 +155,7 @@ const ProductsSection = () => {
             {/* Десктоп версия */}
             <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {products.map((product, index) => (
-            <Card key={index} className=" animate-scale-in">
+            <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 animate-scale-in">
               <CardHeader>
                 <Badge className="w-fit mb-2 bg-blue-100 text-blue-800">{product.category}</Badge>
                 <CardTitle className="text-lg">{product.title}</CardTitle>
@@ -213,7 +213,7 @@ const ProductsSection = () => {
                 <CarouselContent>
                   {products.map((product, index) => (
                     <CarouselItem key={index} className="basis-4/5">
-                      <Card className=" h-80 flex flex-col">
+                      <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-80 flex flex-col">
                         <CardHeader>
                           <Badge className="w-fit mb-2 bg-blue-100 text-blue-800">{product.category}</Badge>
                           <CardTitle className="text-lg">{product.title}</CardTitle>
@@ -273,7 +273,7 @@ const ProductsSection = () => {
             {/* Десктоп версия услуг */}
             <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {services.map((service, index) => (
-                <Card key={index} className="animate-scale-in">
+                <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 animate-scale-in">
                   <CardHeader>
                     <div className="flex justify-end mb-2">
                       <Badge className="bg-green-100 text-green-800 pointer-events-none">{service.price}</Badge>
@@ -341,7 +341,7 @@ const ProductsSection = () => {
                 <CarouselContent>
                   {services.map((service, index) => (
                     <CarouselItem key={index} className="basis-4/5">
-                      <Card className=" h-80 flex flex-col">
+                      <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-80 flex flex-col">
                         <CardHeader>
                           <div className="flex justify-end mb-2">
                             <Badge className="bg-green-100 text-green-800 pointer-events-none">{service.price}</Badge>
