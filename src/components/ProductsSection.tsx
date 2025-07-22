@@ -267,7 +267,14 @@ const ProductsSection = () => {
                     <CardDescription className="text-gray-600 mb-4">
                       {service.description}
                     </CardDescription>
-                    <Dialog open={openServiceModal === index} onOpenChange={(open) => setOpenServiceModal(open ? index : null)}>
+                    <Dialog open={openServiceModal === index} onOpenChange={(open) => {
+                      if (!open) {
+                        // Предотвращаем автоскролл при закрытии
+                        setTimeout(() => setOpenServiceModal(null), 50);
+                      } else {
+                        setOpenServiceModal(index);
+                      }
+                    }}>
                       <DialogTrigger asChild>
                         <Button variant="outline" className="w-full">
                           Подробнее
@@ -300,12 +307,13 @@ const ProductsSection = () => {
                           <Button 
                             onClick={() => {
                               setOpenServiceModal(null);
+                              // Ждем полного закрытия модалки, затем скроллим
                               setTimeout(() => {
                                 const form = document.getElementById('feedback-form');
                                 if (form) {
                                   form.scrollIntoView({ behavior: 'smooth' });
                                 }
-                              }, 100);
+                              }, 150);
                             }}
                             className="bg-green-600 hover:bg-green-700 text-white px-8"
                             size="lg"
