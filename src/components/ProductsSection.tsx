@@ -183,13 +183,13 @@ const ProductsSection = () => {
                 <CarouselContent>
                   {products.map((product, index) => (
                     <CarouselItem key={index} className="basis-4/5">
-                      <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                      <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-80 flex flex-col">
                         <CardHeader>
                           <Badge className="w-fit mb-2 bg-blue-100 text-blue-800">{product.category}</Badge>
                           <CardTitle className="text-lg">{product.title}</CardTitle>
                         </CardHeader>
-                        <CardContent>
-                          <CardDescription className="text-gray-600 mb-4">
+                        <CardContent className="flex-1 flex flex-col">
+                          <CardDescription className="text-gray-600 mb-4 flex-1">
                             {product.description}
                           </CardDescription>
                           <Dialog>
@@ -326,15 +326,15 @@ const ProductsSection = () => {
                 <CarouselContent>
                   {services.map((service, index) => (
                     <CarouselItem key={index} className="basis-4/5">
-                      <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                      <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-80 flex flex-col">
                         <CardHeader>
                           <div className="flex justify-end mb-2">
                             <Badge className="bg-green-100 text-green-800">{service.price}</Badge>
                           </div>
                           <CardTitle className="text-lg">{service.title}</CardTitle>
                         </CardHeader>
-                        <CardContent>
-                          <CardDescription className="text-gray-600 mb-4">
+                        <CardContent className="flex-1 flex flex-col">
+                          <CardDescription className="text-gray-600 mb-4 flex-1">
                             {service.description}
                           </CardDescription>
                           <Dialog>
