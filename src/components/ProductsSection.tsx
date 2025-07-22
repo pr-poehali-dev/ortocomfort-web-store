@@ -96,10 +96,13 @@ const ProductsSection = () => {
   const [openProductModal, setOpenProductModal] = useState<number | null>(null);
   
   const handleOrderService = () => {
-    // DialogClose автоматически закрывает модалку, просто скроллим к форме
+    setOpenServiceModal(null);
+    
+    // Используем более надежный способ предотвращения возврата фокуса
     setTimeout(() => {
       const form = document.getElementById('feedback-form');
       if (form) {
+        // Прокручиваем к форме и устанавливаем фокус на неё
         form.scrollIntoView({ behavior: 'smooth' });
         
         // Устанавливаем фокус на первый элемент формы
@@ -316,16 +319,14 @@ const ProductsSection = () => {
                           </ul>
                         </div>
                         <div className="mt-6 flex justify-center">
-                          <DialogClose asChild>
-                            <Button 
-                              onClick={handleOrderService}
-                              className="bg-green-600 hover:bg-green-700 text-white px-8"
-                              size="lg"
-                            >
-                              <Icon name="Phone" className="mr-2" size={18} />
-                              Заказать услугу
-                            </Button>
-                          </DialogClose>
+                          <Button 
+                            onClick={handleOrderService}
+                            className="bg-green-600 hover:bg-green-700 text-white px-8"
+                            size="lg"
+                          >
+                            <Icon name="Phone" className="mr-2" size={18} />
+                            Заказать услугу
+                          </Button>
                         </div>
                       </DialogContent>
                     </Dialog>
