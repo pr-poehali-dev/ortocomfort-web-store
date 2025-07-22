@@ -108,7 +108,7 @@ const ProductsSection = () => {
               Продукция
             </TabsTrigger>
             <TabsTrigger value="services" className="text-lg">
-              <Icon name="Wrench" className="mr-2" size={20} />
+              <Icon name="Heart" className="mr-2" size={20} />
               Услуги
             </TabsTrigger>
           </TabsList>
@@ -255,8 +255,7 @@ const ProductsSection = () => {
               {services.map((service, index) => (
                 <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 animate-scale-in">
                   <CardHeader>
-                    <div className="flex items-center justify-between mb-2">
-                      <Icon name={service.icon as any} className="text-blue-600" size={32} />
+                    <div className="flex justify-end mb-2">
                       <Badge className="bg-green-100 text-green-800">{service.price}</Badge>
                     </div>
                     <CardTitle className="text-lg">{service.title}</CardTitle>
@@ -273,8 +272,7 @@ const ProductsSection = () => {
                       </DialogTrigger>
                       <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
                         <DialogHeader>
-                          <DialogTitle className="text-2xl text-gray-800 flex items-center">
-                            <Icon name={service.icon as any} className="text-blue-600 mr-3" size={28} />
+                          <DialogTitle className="text-2xl text-gray-800">
                             {service.title}
                           </DialogTitle>
                           <DialogDescription className="text-lg text-gray-600 mt-2">
@@ -330,8 +328,7 @@ const ProductsSection = () => {
                     <CarouselItem key={index} className="basis-4/5">
                       <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                         <CardHeader>
-                          <div className="flex items-center justify-between mb-2">
-                            <Icon name={service.icon as any} className="text-blue-600" size={28} />
+                          <div className="flex justify-end mb-2">
                             <Badge className="bg-green-100 text-green-800">{service.price}</Badge>
                           </div>
                           <CardTitle className="text-lg">{service.title}</CardTitle>
@@ -348,8 +345,7 @@ const ProductsSection = () => {
                             </DialogTrigger>
                             <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
                               <DialogHeader>
-                                <DialogTitle className="text-2xl text-gray-800 flex items-center">
-                                  <Icon name={service.icon as any} className="text-blue-600 mr-3" size={28} />
+                                <DialogTitle className="text-2xl text-gray-800">
                                   {service.title}
                                 </DialogTitle>
                                 <DialogDescription className="text-lg text-gray-600 mt-2">
