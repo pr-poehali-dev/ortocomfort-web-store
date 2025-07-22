@@ -256,7 +256,7 @@ const ProductsSection = () => {
                 <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 animate-scale-in">
                   <CardHeader>
                     <div className="flex justify-end mb-2">
-                      <Badge className="bg-green-100 text-green-800">{service.price}</Badge>
+                      <Badge className="bg-green-100 text-green-800 pointer-events-none">{service.price}</Badge>
                     </div>
                     <CardTitle className="text-lg">{service.title}</CardTitle>
                   </CardHeader>
@@ -329,7 +329,7 @@ const ProductsSection = () => {
                       <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-80 flex flex-col">
                         <CardHeader>
                           <div className="flex justify-end mb-2">
-                            <Badge className="bg-green-100 text-green-800">{service.price}</Badge>
+                            <Badge className="bg-green-100 text-green-800 pointer-events-none">{service.price}</Badge>
                           </div>
                           <CardTitle className="text-lg">{service.title}</CardTitle>
                         </CardHeader>
