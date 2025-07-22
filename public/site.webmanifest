@@ -1,0 +1,31 @@
+{
+    "name": "ОртоКомфорт — ортопедические изделия в Альметьевске",
+    "short_name": "ОртоКомфорт",
+    "description": "Профессиональные ортопедические решения в Альметьевске. Стельки, корсеты, ортезы.",
+    "icons": [
+        {
+            "src": "/img/e7f719ed-e44c-4832-8f86-c2e544e86f3c.jpg",
+            "sizes": "512x512",
+            "type": "image/jpeg",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/favicon-32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#2563eb",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "start_url": "/",
+    "scope": "/",
+    "lang": "ru",
+    "categories": ["medical", "health", "business"]
+}
