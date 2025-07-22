@@ -102,12 +102,12 @@ const ProductsSection = () => {
         </div>
 
         <Tabs defaultValue="products" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 max-w-md mx-auto mb-12">
-            <TabsTrigger value="products" className="text-lg">
+          <TabsList className="grid w-full grid-cols-2 max-w-md mx-auto mb-12 h-12">
+            <TabsTrigger value="products" className="text-lg flex items-center justify-center h-full">
               <Icon name="Package" className="mr-2" size={20} />
               Продукция
             </TabsTrigger>
-            <TabsTrigger value="services" className="text-lg">
+            <TabsTrigger value="services" className="text-lg flex items-center justify-center h-full">
               <Icon name="Heart" className="mr-2" size={20} />
               Услуги
             </TabsTrigger>
