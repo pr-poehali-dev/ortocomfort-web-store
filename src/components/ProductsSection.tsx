@@ -198,14 +198,14 @@ const ProductsSection = () => {
                                 Подробнее
                               </Button>
                             </DialogTrigger>
-                            <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
-                              <DialogHeader>
+                            <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto sm:max-w-2xl sm:max-h-[80vh] sm:rounded-lg max-sm:max-w-full max-sm:max-h-full max-sm:h-screen max-sm:w-screen max-sm:rounded-none max-sm:p-6 max-sm:flex max-sm:flex-col">
+                              <DialogHeader className="max-sm:flex-shrink-0">
                                 <DialogTitle className="text-2xl text-gray-800">{product.title}</DialogTitle>
                                 <DialogDescription className="text-lg text-gray-600 mt-2">
                                   {product.detailedDescription}
                                 </DialogDescription>
                               </DialogHeader>
-                              <div className="mt-6">
+                              <div className="mt-6 max-sm:flex-1 max-sm:overflow-y-auto">
                                 <h4 className="font-semibold text-lg text-gray-800 mb-3">Особенности:</h4>
                                 <ul className="space-y-2">
                                   {product.features.map((feature, featureIndex) => (
@@ -270,8 +270,8 @@ const ProductsSection = () => {
                           Подробнее
                         </Button>
                       </DialogTrigger>
-                      <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
-                        <DialogHeader>
+                      <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto sm:max-w-2xl sm:max-h-[80vh] sm:rounded-lg max-sm:max-w-full max-sm:max-h-full max-sm:h-screen max-sm:w-screen max-sm:rounded-none max-sm:p-6 max-sm:flex max-sm:flex-col">
+                        <DialogHeader className="max-sm:flex-shrink-0">
                           <DialogTitle className="text-2xl text-gray-800">
                             {service.title}
                           </DialogTitle>
@@ -279,7 +279,7 @@ const ProductsSection = () => {
                             {service.detailedDescription}
                           </DialogDescription>
                         </DialogHeader>
-                        <div className="mt-6">
+                        <div className="mt-6 max-sm:flex-1 max-sm:overflow-y-auto">
                           <div className="bg-green-50 p-4 rounded-lg mb-6">
                             <p className="text-2xl font-bold text-green-800 text-center">{service.price}</p>
                           </div>
@@ -343,8 +343,8 @@ const ProductsSection = () => {
                                 Подробнее
                               </Button>
                             </DialogTrigger>
-                            <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
-                              <DialogHeader>
+                            <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto sm:max-w-2xl sm:max-h-[80vh] sm:rounded-lg max-sm:max-w-full max-sm:max-h-full max-sm:h-screen max-sm:w-screen max-sm:rounded-none max-sm:p-6 max-sm:flex max-sm:flex-col">
+                              <DialogHeader className="max-sm:flex-shrink-0">
                                 <DialogTitle className="text-2xl text-gray-800">
                                   {service.title}
                                 </DialogTitle>
@@ -352,7 +352,7 @@ const ProductsSection = () => {
                                   {service.detailedDescription}
                                 </DialogDescription>
                               </DialogHeader>
-                              <div className="mt-6">
+                              <div className="mt-6 max-sm:flex-1 max-sm:overflow-y-auto">
                                 <div className="bg-green-50 p-4 rounded-lg mb-6">
                                   <p className="text-2xl font-bold text-green-800 text-center">{service.price}</p>
                                 </div>
