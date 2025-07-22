@@ -59,6 +59,7 @@ const FeedbackSection = () => {
     setErrors({ name: '', phone: '', message: '' });
     
     try {
+      console.log('Отправляемые данные:', formData);
       const response = await fetch(`${window.location.protocol}//${window.location.hostname}/api/contact`, {
         method: 'POST',
         headers: {
@@ -66,6 +67,7 @@ const FeedbackSection = () => {
         },
         body: JSON.stringify(formData)
       });
+      console.log('Ответ сервера:', response.status, response.statusText);
       
       if (response.ok) {
         toast({
@@ -75,9 +77,11 @@ const FeedbackSection = () => {
         setFormData({ name: '', phone: '', message: '' });
         setErrors({ name: '', phone: '', message: '' });
       } else {
+        const errorText = await response.text();
+        console.error('Ошибка сервера:', response.status, errorText);
         toast({
           title: "Ошибка сервера",
-          description: `Ошибка ${response.status}. Попробуйте еще раз или свяжитесь по телефону.`,
+          description: `Ошибка ${response.status}. ${response.status === 422 ? 'Проверьте правильность данных.' : 'Попробуйте еще раз или свяжитесь по телефону.'}`,
           variant: "destructive",
         });
       }
