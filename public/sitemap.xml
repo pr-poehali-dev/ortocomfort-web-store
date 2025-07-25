@@ -2,24 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
-        <loc>https://ortocomfort.poehali.dev/</loc>
-        <lastmod>2025-01-22</lastmod>
+        <loc>/</loc>
+        <lastmod>2025-07-25</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <image:image>
-            <image:loc>https://ortocomfort.poehali.dev/img/42f27531-f50d-4617-8332-d862c5db973e.jpg</image:loc>
+            <image:loc>/img/42f27531-f50d-4617-8332-d862c5db973e.jpg</image:loc>
             <image:title>Медицинский специалист возле ресепшена</image:title>
-            <image:caption>ОртоКомфорт - медицинский центр в Альметьевске</image:caption>
+            <image:caption>ОртоКомфорт - ортопедический магазин</image:caption>
         </image:image>
         <image:image>
-            <image:loc>https://ortocomfort.poehali.dev/img/f95708d1-a520-4b19-9d96-19c151472a04.jpg</image:loc>
-            <image:title>Ортопедические изделия</image:title>
+            <image:loc>/img/9731a4b7-2e29-4da9-bd10-236d9075b5b0.jpg</image:loc>
+            <image:title>Ортопедические изделия и медицинское оборудование</image:title>
             <image:caption>Ассортимент ортопедических изделий ОртоКомфорт</image:caption>
-        </image:image>
-        <image:image>
-            <image:loc>https://ortocomfort.poehali.dev/img/e7f719ed-e44c-4832-8f86-c2e544e86f3c.jpg</image:loc>
-            <image:title>Логотип ОртоКомфорт</image:title>
-            <image:caption>Медицинский логотип клиники ОртоКомфорт</image:caption>
         </image:image>
     </url>
 </urlset>
