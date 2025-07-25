@@ -13,7 +13,7 @@ const HeroSection = () => {
             </h1>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
               Профессиональные ортопедические решения для комфортной и здоровой жизни. 
-              Более 15 лет заботимся о вашем благополучии.
+              Более 10+ лет заботимся о вашем благополучии.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 

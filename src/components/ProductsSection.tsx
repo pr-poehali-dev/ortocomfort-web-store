@@ -410,8 +410,8 @@ const ProductsSection = () => {
 
         <div className="mt-12 text-center">
           <img 
-            src="/img/f95708d1-a520-4b19-9d96-19c151472a04.jpg" 
-            alt="Ортопедические изделия" 
+            src="/img/9731a4b7-2e29-4da9-bd10-236d9075b5b0.jpg" 
+            alt="Ортопедические изделия и медицинское оборудование" 
             className="rounded-2xl shadow-xl w-full max-w-4xl mx-auto h-[400px] object-cover"
           />
         </div>
