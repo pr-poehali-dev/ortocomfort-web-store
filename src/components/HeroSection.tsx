@@ -11,10 +11,7 @@ const HeroSection = () => {
             <h1 className="text-5xl font-bold text-gray-800 mb-6 leading-tight">
               Ваше здоровье — наш <span className="text-blue-600">приоритет</span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Профессиональные ортопедические решения для комфортной и здоровой жизни. 
-              Более 10+ лет заботимся о вашем благополучии.
-            </p>
+            <p className="text-xl text-gray-600 mb-8 leading-relaxed">Профессиональные ортопедические решения для комфортной и здоровой жизни. Более 10 лет заботимся о вашем благополучии.</p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 onClick={() => {
